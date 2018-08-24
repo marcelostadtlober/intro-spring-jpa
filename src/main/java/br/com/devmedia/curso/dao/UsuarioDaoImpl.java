@@ -25,14 +25,12 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
 	@Override
 	public void editar(Usuario usuario) {
-		// TODO Auto-generated method stub
-		
+		entityManager.merge(usuario);		
 	}
 
 	@Override
 	public void excluir(Long id) {
-		// TODO Auto-generated method stub
-		
+		entityManager.remove(entityManager.getReference(Usuario.class, id));		
 	}
 
 	@Transactional(readOnly = true)
