@@ -7,14 +7,6 @@ import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
 
-/**
- * 
- * @author Marcelo
- * 
- * Classe de Integração entre o Spring, o Hibernate e a Jpa.
- *
- */
-
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -23,7 +15,13 @@ import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-
+/**
+ * 
+ * @author Marcelo
+ * 
+ * Classe de Integração entre o Spring, o Hibernate e a Jpa.
+ *
+ */
 @Configuration
 @EnableTransactionManagement	// Informa ao Spring que ele gerenciará as transações da aplicação
 public class SpringJpaConfig {
