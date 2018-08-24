@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import br.com.devmedia.curso.domain.Usuario;
 
 @Repository
+@Transactional
 public class UsuarioDaoImpl implements UsuarioDao {
 	
 	@PersistenceContext
@@ -19,8 +20,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
 	@Override
 	public void salvar(Usuario usuario) {
-		// TODO Auto-generated method stub
-		
+		entityManager.persist(usuario);		
 	}
 
 	@Override
