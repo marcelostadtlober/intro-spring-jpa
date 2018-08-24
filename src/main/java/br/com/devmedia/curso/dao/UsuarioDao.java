@@ -2,6 +2,7 @@ package br.com.devmedia.curso.dao;
 
 import java.util.List;
 
+import br.com.devmedia.curso.domain.TipoSexo;
 import br.com.devmedia.curso.domain.Usuario;
 
 public interface UsuarioDao {
@@ -15,5 +16,7 @@ public interface UsuarioDao {
 	Usuario getId(Long id);
 	
 	List<Usuario> getTodos();
+	
+	List<Usuario> getBySexo(TipoSexo sexo);
 
 }

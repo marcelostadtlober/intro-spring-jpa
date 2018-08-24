@@ -9,6 +9,7 @@ import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.devmedia.curso.domain.TipoSexo;
 import br.com.devmedia.curso.domain.Usuario;
 
 @Repository
@@ -48,6 +49,16 @@ public class UsuarioDaoImpl implements UsuarioDao {
 	public List<Usuario> getTodos() {
 		String jpql = "from Usuario u";
 		TypedQuery<Usuario> query = entityManager.createQuery(jpql, Usuario.class);
+		
+		return query.getResultList();
+	}
+
+	@Transactional(readOnly = true)
+	@Override
+	public List<Usuario> getBySexo(TipoSexo sexo) {
+		String jpql = "from Usuario u where u.sexo = :sexo";
+		TypedQuery<Usuario> query = entityManager.createQuery(jpql, Usuario.class);
+		query.setParameter("sexo", sexo);
 		
 		return query.getResultList();
 	}
