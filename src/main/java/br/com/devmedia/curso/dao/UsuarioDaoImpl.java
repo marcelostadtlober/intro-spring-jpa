@@ -4,8 +4,10 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.devmedia.curso.domain.Usuario;
 
@@ -39,10 +41,13 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		return null;
 	}
 
+	@Transactional(readOnly = true)
 	@Override
 	public List<Usuario> getTodos() {
-		// TODO Auto-generated method stub
-		return null;
+		String jpql = "from Usuario u";
+		TypedQuery<Usuario> query = entityManager.createQuery(jpql, Usuario.class);
+		
+		return query.getResultList();
 	}
 	
 }
