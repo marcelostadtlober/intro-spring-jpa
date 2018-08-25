@@ -31,6 +31,15 @@ public class UsuarioController {
 		return TipoSexo.values();
 	}
 	
+	@GetMapping("/nome")
+	public ModelAndView listarPorNome(@RequestParam(value = "nome") String nome) {
+		if (nome == null) {
+			return new ModelAndView("redirect:/usuario/todos");
+		}
+		
+		return new ModelAndView("/user/list", "usuarios", dao.getByNome(nome));
+	}
+	
 	@GetMapping("/sexo")
 	public ModelAndView listarPorSexo(@RequestParam(value = "tipoSexo") TipoSexo sexo) {
 		if (sexo == null) {

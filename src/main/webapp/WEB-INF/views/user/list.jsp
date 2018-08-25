@@ -39,6 +39,19 @@
 					</div>
 				</form>
 			</div>
+			
+			<div>
+				<spring:url var="act_nome" value="/usuario/nome"/>
+				<form action="${act_nome}" method="get">
+					<div class="form-group">
+						<label for="nome">Busca por Nome ou Sobrenome</label>
+						<input name="nome" type="text" class="form-control">
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-default">Localizar</button>
+					</div>
+				</form>
+			</div>
 		</div>
 		<hr>
 
