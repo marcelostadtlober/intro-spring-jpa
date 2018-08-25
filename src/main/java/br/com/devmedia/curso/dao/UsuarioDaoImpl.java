@@ -62,5 +62,16 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		
 		return query.getResultList();
 	}
+
+	@Transactional(readOnly = true)
+	@Override
+	public List<Usuario> getByNome(String nome) {
+		String jpql = "from Usuario u where u.nome like :nome or u.sobrenome like :sobrenome";
+		TypedQuery<Usuario> query = entityManager.createQuery(jpql, Usuario.class);
+		query.setParameter("nome", "%" + nome + "%");
+		query.setParameter("sobrenome", "%" + nome + "%");
+		
+		return query.getResultList();
+	}
 	
 }
